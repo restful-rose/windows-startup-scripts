@@ -6,6 +6,10 @@ $volumePath = "C:\Nick\EncryptedVolume.hc"
 
 # Get Vera Crypt password and mount drive
 $veraCryptPassword = op read "op://Employee/VeraCrypt/password"
+if ([string]::IsNullOrEmpty($veraCryptPassword)) {
+    Write-Error "Could not get 1Password connected"
+}
+
 Write-Output "Mounting encrypted partition..."
 VeraCrypt.exe /v $volumePath /l A /p $veraCryptPassword /q /s
 # Sleep while drive is mounting
