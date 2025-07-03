@@ -4,10 +4,21 @@
 
 $volumePath = "C:\Nick\EncryptedVolume.hc"
 
-# Get Vera Crypt password and mount drive
-$veraCryptPassword = op read "op://Employee/VeraCrypt/password"
-if ([string]::IsNullOrEmpty($veraCryptPassword)) {
+$maxAttempts = 5
+$veraCryptPassword = ""
+
+for ($i = 1; $i -le $maxAttempts; $i++) {
+    Read-Host "Press any key to start authentication"
+    $veraCryptPassword = op read "op://Employee/VeraCrypt/password"
+    if (![string]::IsNullOrEmpty($veraCryptPassword) -and $veraCryptPassword.Length -gt 0) {
+        Write-Output "Authentication completed successfully"
+        break
+    }
+    Write-Output "No password found on attmept $i of $maxAttempts"
+}
+if (!$veraCryptPassword.Length -gt 0 -and [string]::IsNullOrEmpty($veraCryptPassword)) {
     Write-Error "Could not get 1Password connected"
+    exit 1
 }
 
 Write-Output "Mounting encrypted partition..."
