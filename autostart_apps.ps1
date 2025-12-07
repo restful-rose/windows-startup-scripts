@@ -52,3 +52,8 @@ $name = "202020"
 # $packageName = Get-AppxPackage | Where-Object { $_.Name -match $name } | Select-Object -ExpandProperty PackageFamilyName
 $packageName = "44686MichaelChen.202020_1xnyq3bbv8tvj"
 Start-Process shell:AppsFolder\$packageName!App
+
+# Update the security champion-fraction with updated information
+Sprint-Report.exe sc
+# Update background picture with new information
+C:\Nick\Bin\BGInfo\Bginfo.exe "C:\Nick\Bin\BGInfo\nve_background.bgi" /timer:0 /silent /nolicprompt
