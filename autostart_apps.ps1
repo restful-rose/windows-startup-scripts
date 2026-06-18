@@ -43,11 +43,14 @@ Start-Sleep 9
 
 # Start Obsidian
 
-Write-Output "Starting Obisidan"
 $name = "Obsidian"
+Write-Output "Starting {$name}"
+# ~~ Uncomment if Obsidian is installed as an Appx Package
 # $packageName = Get-AppxPackage | Where-Object { $_.Name -match $name } | Select-Object -ExpandProperty PackageFamilyName
-$packageName = "nve.Obsidian_hwxf5dwcp4wbm"
-Start-Process shell:AppsFolder\$packageName!$name
+#$packageName = "nve.Obsidian_hwxf5dwcp4wbm"
+#Start-Process shell:AppsFolder\$packageName!$name
+
+Start-Process -FilePath C:\Users\nick\AppData\Local\Programs\obsidian\Obsidian.exe -WorkingDirectory C:\Users\nick\AppData\Local\Programs\obsidian\ -WindowStyle Hidden -RedirectStandardOutput "NUL"
 
 
 # Start 202020
