@@ -50,7 +50,7 @@ Write-Output "Starting {$name}"
 #$packageName = "nve.Obsidian_hwxf5dwcp4wbm"
 #Start-Process shell:AppsFolder\$packageName!$name
 
-Start-Process -FilePath C:\Users\nick\AppData\Local\Programs\obsidian\Obsidian.exe -WorkingDirectory C:\Users\nick\AppData\Local\Programs\obsidian\ -WindowStyle Hidden -RedirectStandardOutput "NUL"
+Start-Process -FilePath C:\Users\nick\AppData\Local\Programs\obsidian\Obsidian.exe -WorkingDirectory C:\Users\nick\AppData\Local\Programs\obsidian\ -RedirectStandardOutput "NUL"
 
 
 # Start 202020
@@ -63,6 +63,6 @@ Start-Process shell:AppsFolder\$packageName!App
 
 Write-Output "Updating security champion fraction"
 # Update the security champion-fraction with updated information
-Sprint-Report.exe sc --use-vault
+Sprint-Report.exe write-files --use-current-month
 # Update background picture with new information
 C:\Nick\Bin\BGInfo\Bginfo.exe "C:\Nick\Bin\BGInfo\nve_background.bgi" /timer:0 /silent /nolicprompt
